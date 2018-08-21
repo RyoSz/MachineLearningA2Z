@@ -34,6 +34,11 @@ print(y)
 ## Not good: remove the lines which contains missing value
 ## OK: Take a mean of the all value in the column
 from sklearn.preprocessing import Imputer
+# selecting the library or function name and press Ctrl+i will give you an tutorial of that function.
+imputer = Imputer(missing_values = 'NaN', strategy = 'mean', axis = 0)
+imputer = imputer.fit(X[:,1:3])
+X[:,1:3] = imputer.transform(X[:,1:3])
+print(X)
 
 
 
