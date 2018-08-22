@@ -28,8 +28,8 @@ y = dataset.iloc[:, 3].values
 
 # Show the created matrix in cosole
 # Can't open it by variable explorer. It's not supported.
-print(X)
-print(y)
+print(*X, sep='\n')
+print(*y, sep='\n')
 
 # Taking care of missing data
 ## Not good: remove the lines which contains missing value
@@ -39,12 +39,22 @@ from sklearn.preprocessing import Imputer
 imputer = Imputer(missing_values = 'NaN', strategy = 'mean', axis = 0)
 imputer = imputer.fit(X[:,1:3])
 X[:,1:3] = imputer.transform(X[:,1:3])
-print(X)
+print(*X, sep='\n')
 
-
-
-
-
+# Encoding categorical data
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+#ここから3行のやり方では順序付きデータになってしまい、カントリーコードとしては適切でない。
+#labelencoder_X = LabelEncoder()
+#X[:,0] = labelencoder_X.fit_transform(X[:,0])
+#print(*X, sep='\n')
+#代わりにDummy variableを作る。
+onehotencoder_X = OneHotEncoder(categorical_features=[0])
+X = onehotencoder_X.fit_transform(X).toarray()
+print(*X, sep='\n')
+# y variableのPurchasedは、Yes, No　しかないので、0/1でOKなので、LabelEncoderでOK。
+labelencoder_y = LabelEncoder()
+y = labelencoder_y.fit_transform(y)
+print(*y, sep='\n')
 
 
 
