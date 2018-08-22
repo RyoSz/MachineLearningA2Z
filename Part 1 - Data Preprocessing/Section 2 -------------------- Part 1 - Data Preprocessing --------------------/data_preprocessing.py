@@ -11,12 +11,13 @@ Created on Wed Aug 22 00:03:25 2018
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+import os
 
 # Set working directory
-"""
-- Go to file directory by file explorer
-- Click on the right upper side botton as "set as current console's working directory"
-"""
+# Needs to be changed path according to where file exists
+os.chdir("C:\\Users\\sir1hig\\Desktop\\Projects\\Lectures\\MachineLearning\\MachineLearningA2Z\\Part 1 - Data Preprocessing\\Section 2 -------------------- Part 1 - Data Preprocessing --------------------")
+# Confirm the current working directory
+os.getcwd()
 
 # Import the dataset
 dataset = pd.read_csv('Data.csv')
